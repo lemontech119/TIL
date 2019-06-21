@@ -1,0 +1,18 @@
+h1 {
+    color:darkgoldenrod;
+
+}
+
+p {
+    color: tomato;
+    margin-left: 10px;
+}
+
+#second {
+    font-size: 60px;
+    color: yellow;
+}
+
+.class {
+    color: red;
+}

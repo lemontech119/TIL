@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        a {
+            text-decoration: none;
+            margin-left: 18px;
+            color: turquoise;
+        }
+        .login_form {
+            background-color: #f6f6f6;
+            width: 400px;
+            height: 400px;
+            margin: 230px auto;
+        }
+        
+        .inline_form {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        #login_button {
+            background-color: #337ab6;
+            color: white;
+            border : 0px;
+        }
+
+        #id, #pass, #login_button {
+            width: 300px;
+            height: 40px;
+            margin: 8px 0px;
+            border-radius: 3px;
+            border: 1px solid #dbdbdb;
+        }
+        .remember {
+            width: 50%;
+            height: 21px;
+            float: left;
+        }
+        .forgot {
+            width: 49%;
+            height: 21px;
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login_form">
+        <div class="inline_form"> 
+            <h1 style="text-align: center">Log in</h1>
+            <input type="text" placeholder=" Username" name="id" id="id"><br>
+            <input type="password" placeholder=" Password" name="pass" id="pass"><br>
+            <input type="button" id="login_button" value="Log in"><br>
+            <div class="Remember">
+                <input type="checkbox" name="check"> Remember me
+            </div>
+            <div class="forgot">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+        <p style="color: turquoise; text-align: center"><b>Create an Account</b></p>
+    </div>
+</body>
+</html>

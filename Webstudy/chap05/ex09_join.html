@@ -1,0 +1,158 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        .form {
+            width: 100%;
+        }
+        .left_form {
+            float: left;
+            width: 10%;
+            visibility: hidden;
+        }
+        
+        .right_form {
+            float: right;
+            width: 10%;
+            visibility: hidden;
+        }
+        
+        .join_forn {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 80%;
+        }
+
+        th {
+            width: 30%;
+        }
+
+        td {
+            width: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div class="left_form">
+            <input>
+        </div>
+        <div class="join_form">
+            <form>
+                <table>
+                    <tr>
+                        <th>이름</th>
+                        <td><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <th>주민등록번호</th>
+                        <td><input type="number" name="resident_num_1">-<input type="password" name="resident_num_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>생년월일</th>
+                        <td><input type="date" name="birth"></td>
+                    </tr>
+                    <tr>
+                        <th>아이디</th>
+                        <td><input type="text" name="ID"></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td><input type="password" name="pass"></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호확인</th>
+                        <td><input type="password" name="pass_confirm"> 영문/숫자포함 6자 이상</td>
+                    </tr>
+                    <tr>
+                        <th>취미</th>
+                        <td><select name="hobby">
+                                <option value="youtube">유튜브시청</option>
+                                <option value="music">음악감상</option>
+                                <option value="book">책보기</option>
+                                <option value="game">게임하기</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>이메일</th>
+                        <td><input type="text" name="email_id">@<input type="text" name="email_site">
+                            <select name="site">
+                                <option value="default">직접입력</option>
+                                <option value="naver">naver.com</option>
+                                <option value="google">gmail.com</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td><input type="text" name="resident"><button onclick="alert('추후 구현')">주소찾기</button>
+                            <br><input type="text" placeholder="상세주소" name="detail">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>전화번호</th>
+                        <td><input type="number" name="telephone"></td>
+                    </tr>
+                    <tr>
+                        <th>핸드폰번호</th>
+                        <td><input type="number" name="phone"></td>
+                    </tr>
+                    <tr>
+                        <th>직업</th>
+                        <td><select name="job">
+                                <option value="student">유튜브시청</option>
+                                <option value="programmer">음악감상</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>메일/sns 정보 수신</th>
+                        <td><input type="radio" name="receive" value="yes" checked> 수신
+                            <input type="radio" name="receive" value="no"> 수신거부
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>회원종류</th>
+                        <td><input type="radio" name="member" value="normal"> 일반회원
+                            <input type="radio" name="member" value="business"> 기업회원
+                            <input type="radio" name="member" value="agency"> 기관회원
+                            <input type="radio" name="member" value="admin"> 관리자
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>정보공개여부</th>
+                        <td><select name="information">
+                                <option value="default">선택하세요</option>
+                                <option value="yes">공개</option>
+                                <option value="no">공개불가</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center"><button>회원가입</button> <button>취소</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="right_form">
+
+        </div>
+    </div>
+</body>
+
+</html>
