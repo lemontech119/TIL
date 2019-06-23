@@ -39,8 +39,10 @@
 >
 >``` bash
 >$create-react-app --version
+>##(window에서 안 될 경우 npm create-react-app --version)
 >## 버전 확인
 >$create-react-app 프로젝트명
+>##(window에서 프로젝트 생성이 안 될 경우 npx create-react-app 프로젝트명)
 >```
 >
 >프로젝트 실행
