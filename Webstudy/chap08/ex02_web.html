@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+       * {
+          
+           box-sizing: border-box;
+       }
+
+      
+       .clearfix::after {
+           content: "";
+           clear: both;
+           display: table;
+       }
+
+       .container {
+           width: 960px;
+           margin: 0 auto;
+       }
+
+       .header, .footer, .main {
+           border: 2px solid blue;
+       }
+
+       .header {
+           padding: 20px;
+       }
+
+       .footer {
+           padding: 20px;
+       }
+
+       .menu {
+           border: 2px solid green;
+          
+           background-color: black;
+           color: white;
+       }
+      
+       .content {
+           border: 2px solid green;
+          
+           padding: 20px;
+       }
+
+       #menulist {
+           list-style-type: none;
+           padding: 0;
+          
+       }
+
+       #menulist > li {
+           display: inline-block;
+       }
+
+       .menuitem {
+          
+           padding: 16px;
+           text-decoration: none;
+           color: white;
+          
+       }
+
+       .menuitem:hover {
+           background-color: darkgray;
+       }
+
+       .box {
+           width: 33.33%;
+           height: 200px;
+           background-color: tomato;
+           border:1px solid blue;
+           float:left;
+       }
+
+       .tablecolums {
+           display: table;
+           width: 100%;
+       }
+       .box2 {
+           display: table-cell;
+           width: 50%;
+           height: 100px;
+           background-color: lime;
+           border:1px solid blue;
+          
+       }
+   </style>
+</head>
+<body>
+   <!-- 문서 전체 div (중앙정렬위해) -->
+   <div class="container">
+
+       <!-- 헤더부분 -->
+       <div class="header">
+           <h1>홈페이지 레이아웃</h1>
+       </div>
+      
+       <!-- main 부분 -->
+       <div class="main clearfix">
+           <!-- 메뉴 부분 -->
+           <div class="menu">
+               <ul id="menulist">
+                   <li><a href="#" class="menuitem">메뉴 항목 1</a></li>
+                   <li><a href="#" class="menuitem">메뉴 항목 2</a></li>
+                   <li><a href="#" class="menuitem">메뉴 항목 3</a></li>
+                   <li><a href="#" class="menuitem">메뉴 항목 4</a></li>
+               </ul>
+           </div>
+      
+          
+           <!-- 컨텐츠 부분 -->
+           <div class="content">
+               <div class="columnboxs clearfix">
+                   <div class="box"></div>
+                   <div class="box"></div>
+                   <div class="box"></div>
+               </div>
+
+               <p>피가 그들은 그러므로 가지에 하여도 것이다. 살 얼음에 피어나는 인생에 인간이 구할 할지라도 운다. 돋고, 유소년에게서 그들은 충분히 그들은 꾸며 끓는 그들에게 황금시대다. 것은 인간은 새 피가 그러므로 청춘 피에 바이며, 있으랴? 아니더면, 얼음 발휘하기 방지하는 끓는다. 주며, 인생에 같이 곧 따뜻한 봄바람이다. 옷을 희망의 이상의 용감하고 청춘의 봄바람이다. 청춘 긴지라 커다란 같이, 그러므로 많이 얼마나 천지는 봄바람이다. 새가 발휘하기 않는 것은 같지 할지니, 남는 그리하였는가? 끓는 물방아 동력은 청춘의 새가 그들은 것이다.
+
+                       피가 용감하고 우리 속에서 사막이다. 인생을 기관과 길지 충분히 희망의 가치를 꽃이 귀는 그리하였는가? 피어나는 원질이 찬미를 설레는 것은 전인 가는 쓸쓸하랴? 가는 새 부패를 말이다. 그들에게 있으며, 이 불어 튼튼하며, 커다란 그들의 쓸쓸하랴? 힘차게 때에, 인간의 보이는 우리 낙원을 피고, 어디 있다. 광야에서 기관과 고동을 아름답고 위하여서. 별과 같이, 품고 천하를 구하기 만물은 할지니, 있다. 인간이 이성은 소리다.이것은 있는 방황하여도, 남는 인생에 쓸쓸하랴? 대중을 원대하고, 싶이 위하여 되는 가는 너의 철환하였는가? 아니한 인생을 긴지라 이상의 철환하였는가?
+                      
+                       전인 이상의 끓는 만물은 있는 아니다. 그들은 이상의 쓸쓸한 인류의 황금시대다. 놀이 싹이 청춘 얼음이 밥을 청춘의 이상의 못할 영락과 끓는다. 곧 붙잡아 풀이 수 심장의 있으랴? 황금시대의 우리 이상의 인류의 약동하다. 있는 이상의 봄바람을 말이다. 아니더면, 긴지라 거친 이것이다. 않는 아름답고 오아이스도 창공에 되는 이상은 위하여서, 있으랴? 물방아 사랑의 현저하게 오직 인생을 영원히 속에 놀이 충분히 그리하였는가? 천지는 청춘은 주며, 것은 힘차게 창공에 이상의 현저하게 사랑의 말이다. 역사를 품으며, 지혜는 봄바람이다.</p>
+
+               <div class="tablecolums">
+                   <div class="box2"></div>
+                   <div class="box2"></div>
+               </div>  
+              
+               <p>피가 그들은 그러므로 가지에 하여도 것이다. 살 얼음에 피어나는 인생에 인간이 구할 할지라도 운다. 돋고, 유소년에게서 그들은 충분히 그들은 꾸며 끓는 그들에게 황금시대다. 것은 인간은 새 피가 그러므로 청춘 피에 바이며, 있으랴? 아니더면, 얼음 발휘하기 방지하는 끓는다. 주며, 인생에 같이 곧 따뜻한 봄바람이다. 옷을 희망의 이상의 용감하고 청춘의 봄바람이다. 청춘 긴지라 커다란 같이, 그러므로 많이 얼마나 천지는 봄바람이다. 새가 발휘하기 않는 것은 같지 할지니, 남는 그리하였는가? 끓는 물방아 동력은 청춘의 새가 그들은 것이다.
+
+                       피가 용감하고 우리 속에서 사막이다. 인생을 기관과 길지 충분히 희망의 가치를 꽃이 귀는 그리하였는가? 피어나는 원질이 찬미를 설레는 것은 전인 가는 쓸쓸하랴? 가는 새 부패를 말이다. 그들에게 있으며, 이 불어 튼튼하며, 커다란 그들의 쓸쓸하랴? 힘차게 때에, 인간의 보이는 우리 낙원을 피고, 어디 있다. 광야에서 기관과 고동을 아름답고 위하여서. 별과 같이, 품고 천하를 구하기 만물은 할지니, 있다. 인간이 이성은 소리다.이것은 있는 방황하여도, 남는 인생에 쓸쓸하랴? 대중을 원대하고, 싶이 위하여 되는 가는 너의 철환하였는가? 아니한 인생을 긴지라 이상의 철환하였는가?
+                      
+                       전인 이상의 끓는 만물은 있는 아니다. 그들은 이상의 쓸쓸한 인류의 황금시대다. 놀이 싹이 청춘 얼음이 밥을 청춘의 이상의 못할 영락과 끓는다. 곧 붙잡아 풀이 수 심장의 있으랴? 황금시대의 우리 이상의 인류의 약동하다. 있는 이상의 봄바람을 말이다. 아니더면, 긴지라 거친 이것이다. 않는 아름답고 오아이스도 창공에 되는 이상은 위하여서, 있으랴? 물방아 사랑의 현저하게 오직 인생을 영원히 속에 놀이 충분히 그리하였는가? 천지는 청춘은 주며, 것은 힘차게 창공에 이상의 현저하게 사랑의 말이다. 역사를 품으며, 지혜는 봄바람이다.</p>
+
+              
+           </div>
+       </div>
+
+       <!-- 푸터 부분 -->
+       <div class="footer">
+           <h2>email:aaa@gmail.com</h2>
+       </div>
+   </div>
+</body>
+</html>
