@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 256px;
+            height: 198px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>1. MouseClick 이벤트 처리</h1>
+    <p>경품 추첨! 원하는 라이언을 클릭하세요</p>
+    <img src="../images/image1.jpg" id="ryan1">
+    <img src="../images/image2.jpg" id="ryan2">
+    <img src="../images/image3.jpg" id="ryan3">
+    <img src="../images/image7.jpg" id="ryan4">
+    <img src="../images/image8.jpg" id="ryan5">
+    <script>
+        var str1 = "꽝 !  다음을 기약하세요!";
+        var str2 = "당첨 !  축하합니다.! ";
+
+        document.getElementById("ryan3").onclick = function () {
+            alert(str2);
+        }
+        document.getElementById("ryan1").onclick = function () {
+            alert(str1);
+        }
+        document.getElementById("ryan2").onclick = function () {
+            alert(str1);
+        }
+        document.getElementById("ryan4").onclick = function () {
+            alert(str1);
+        }
+        document.getElementById("ryan5").onclick = function () {
+            alert(str1);
+        }
+    </script>
+</body>
+
+</html>

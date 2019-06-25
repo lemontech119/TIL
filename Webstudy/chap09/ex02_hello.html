@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/script.js"></script>
+    <script>
+        function welcome() {
+            document.write("<p>Hello world</p>");
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>Hello JavaScript</h1>
+
+    <button onclick="alert('버튼 클릭됨!')">touch</button>
+    <script>
+        console.log('welcome print start');
+        document.write("<h2>Hello World</h2>");
+        welcome();
+        welcome_script();
+        console.log('welcome print end');
+        alert("삐용삐용");
+
+        var result = prompt("아이디를 입력하세요.");
+        document.write('입력하신 아이디는' + result + '입니다.');
+
+        //confirm 테스트
+        var result2 = confirm('회원 탈퇴를 하시겠습니까?');
+        document.write(result2);
+    </script>
+</body>
+
+</html>

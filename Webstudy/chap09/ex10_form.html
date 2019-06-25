@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function total() {
+            var han = document.getElementById('hanguel').value;
+            console.log(han);
+            var math = document.getElementById('math').value;
+            console.log(math);
+            var english = document.getElementById('english').value;
+            console.log(english);
+            total_num = Number(han) + Number(math) + Number(english);
+            document.getElementById("total").innerHTML = total_num;
+            total_mean = (Number(han) + Number(math) + Number(english)) / 3;
+            document.getElementById("mean").innerHTML = total_mean;
+            // document.write('test');
+        }
+    </script>
+</head>
+
+<body>
+    국어: <input type="text" name="hanguel" id="hanguel"><br>
+    수학: <input type="text" name="math" id="math"><br>
+    영어: <input type="text" name="english" id="english"><br>
+    <button onclick="total()">계산</button>
+    <hr>
+    <p>총점 : <span id="total"></span></p>
+    <p>평균 : <span id="mean"></span></p>
+
+</body>
+
+</html>

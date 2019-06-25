@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3> Type Conversion </h3>
+    <hr>
+    <script>
+        var num1 = 3.145,
+            num2 = 20,
+            num3 = 100;
+        var str1 = "58",
+            str2 = "3.678",
+            str3 = "javascript";
+        var flag1 = true,
+            flag2 = false;
+
+        document.write(str1 + num2 + '<br>');
+        document.write(Number(str1) + num2 + '<br>');
+        document.write(parseInt(str1) + num2 + '<br>');
+        document.write(parseInt(str2) + num2 + '<br>');
+        document.write(parseInt(str3) + num2 + '<br>');
+        document.write(parseFloat(str2) + num2 + '<br>');
+        document.write(parseInt(num1) + num2 + '<br><hr>');
+        document.write(num2 + num3 + '<br>');
+        document.write(num2 + num3.toString() + '<br>');
+        document.write(Boolean(num2) + num3.toString() + '<br>');
+        document.write(str3 + Number(flag1) + '<br>');
+        document.write(str3 + Number(flag2) + '<br>');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>연산자</h3>
+    <hr>
+    <script>
+        var num1 = 100;
+        var num2 = 2;
+
+        document.write("num1 = ", num1, "<br />");
+        document.write("num2 = ", num2, "<br />");
+        num1 = 50;
+        document.write("num1 = 50; num1 = ", num1, "<br />");
+        num1 += 10;
+        document.write("num1 += 10; num1 = ", num1, "<br />");
+        num1 -= 20;
+        document.write("num1 -= 5; num1 = ", num1, "<br />");
+        num1 *= num2;
+        document.write("num1 *= num2; num1 = ", num1, "<br />");
+    </script>
+
+    <h3> 비교연산자 </h3>
+    <hr>
+    <script>
+        var num1 = 15, num2 = 4, num3 = 15;
+        var grade = 15.0;
+        var str = "80";
+
+        document.write((num1 <= num2) + '<br>');
+        document.write((num1 != num3) + '<br>');
+        document.write((num3 == grade) + '<br>');
+        document.write((num3 === grade) + '<br>');
+        document.write((num3 == 15) + '<br>');
+        document.write((num3 === "15") + '<br>');
+        document.write((str == 80) + '<br>');
+        document.write((str === 80) + '<br><br>');        
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var qty = 10;
+        var price = 1000;    
+        var discount = 10;
+        var change = getCharge(qty, price, discount);
+
+        document.write(change);
+
+        function getCharge(qty, price, discount){
+            var total = qty * price -discount;
+            var output = '<tr><td>' + total + '</td></tr>';
+            return output;
+        }
+    </script>
+</body>
+</html>

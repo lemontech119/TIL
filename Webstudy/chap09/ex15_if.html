@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <p>사용자에게 숫자를 입력받아 홀수 인지 짝수인지 출력</p>
+
+        <input type="number" id="num">
+        <input type="button" onclick="check()" value="check">    
+        <script>
+            function check() {
+                var num = document.getElementById("num").value;
+                if(num % 2 == 0){
+                    alert("짝수네요.");
+                }else{
+                    alert("홀수네요");
+                }
+            }
+        </script>
+</body>
+</html>

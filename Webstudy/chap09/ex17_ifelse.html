@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-color: red;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>1번</h1>
+
+    <input type="number" id="month">
+    <button onclick="myFunction()">몇 월?</button>
+
+    <p id="demo"></p>
+    <h2>2번</h2>
+
+    <input type="number" id="score">
+    <button onclick="exam()">나의 성적은?</button>
+    <p id="demo2"></p>
+
+
+    <h2>3번</h2>
+
+    <div id="b1" onclick="check_circle('b1')"></div>
+    <div id="b2" onclick="check_circle('b2')"></div>
+    <div id="b3" onclick="check_circle('b3')"></div>
+    <div id="b4" onclick="check_circle('b4')"></div>
+    <div id="b5" onclick="check_circle('b5')"></div>
+
+    <script>
+        function check_circle(b){
+            if(b=="b1"){
+                alert("당첨");
+            }else{
+                alert("운없엉!");
+            }
+        }
+
+        function myFunction() {
+            month = document.getElementById("month").value;
+            month = Number(month);
+            if (month >= 3 & month <= 5) {
+                document.getElementById('demo').innerHTML = "봄입니다. 그래봤자 코딩해야돼요";
+            } else if (month >= 6 & month <= 8) {
+                document.getElementById('demo').innerHTML = "여름입니다. 그래봤자 코딩해야돼요";
+            } else if (month >= 9 & month <= 11) {
+                document.getElementById('demo').innerHTML = "가을입니다. 그래봤자 코딩해야돼요";
+            } else if (month == 12 | month == 1 | month == 2) {
+                document.getElementById('demo').innerHTML = "겨율입니다. 그래봤자 코딩해야돼요";
+            } else {
+                document.getElementById('demo').innerHTML = "너 도대체 뭘 적은거니?";
+            }
+        }
+
+        function exam() {
+            score = document.getElementById("score").value;
+            var alpha;
+            if (score >= 90) {
+                alpha = "A";
+            } else if (score >= 80) {
+                alpha = "B";
+            } else if (score >= 70) {
+                alpha = "C";
+            } else if (score >= 60) {
+                alpha = "D";
+            } else {
+                alpha = "F";
+            }
+
+            document.getElementById('demo2').innerHTML = alpha;
+        }
+    </script>
+</body>
+
+</html>

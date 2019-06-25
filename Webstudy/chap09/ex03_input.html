@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src=""></script>
+</head>
+<body>
+    <table style="border:1px solid black">
+
+    <script>
+        var name = prompt("이름은?");
+        var hangeul = prompt("국어 시험 성적은?");
+        hangeul *= 1;
+        var math = prompt("수학 시험성적은?");
+        math *= 1;
+        var total = hangeul + math;
+        var mean = total/2;
+
+        document.write("<tr><td>이름</td><td>"+ name +"</td></tr>");
+        document.write("<tr><td>국어</td><td>"+ hangeul +"</td></tr>");
+        document.write("<tr><td>수학</td><td>"+ math +"</td></tr>");
+        document.write("<tr><td>총점</td><td>"+ total +"</td></tr>");
+        document.write("<tr><td>평균</td><td>"+ mean +"</td></tr>");
+    </script>
+    </table>    
+</body>
+</html>

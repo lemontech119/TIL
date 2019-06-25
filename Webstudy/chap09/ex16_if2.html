@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>탈퇴 체크</p>
+
+    <button onclick="myFunction()">탈퇴할래요</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var txt;
+            var r = confirm("진짜?");
+            if (r == true) {
+                txt = "탈퇴했습니다.";
+            } else {
+                txt = "잔류했습니다.";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+</body>
+
+</html>
