@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var season = ["봄", "여름", "가을", "겨울"];
+
+        document.write("월 : " + months + "<br>");  // 배열명 참조
+        document.write("요일 : " + days + "<br>");  // 배열명 참조 
+        document.write("<hr>" + season.length + " 계절 종류 : ");
+        for (i = 0; i < season.length; i++) {
+            document.write(season[i] + ' ');  // 배열원소 참조
+        }
+    </script>
+</body>
+
+</html>

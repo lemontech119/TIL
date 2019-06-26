@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <script>
+        var txt = "";
+        var numbers = [45, 4, 9, 16, 25];
+
+        // forEach 1
+        numbers.forEach(function (value, index, array) {
+            txt = txt + value + ", ";
+        });
+        document.getElementById("demo").innerHTML = txt;
+
+        txt = "";
+        // forEach 2
+        numbers.forEach(function (value) {
+            txt = txt + value + ", ";
+        });
+        document.getElementById("demo2").innerHTML = txt;
+
+        var numArray = [10, 50, 30, 10, 66, 99]
+
+        document.write(numArray.sort())
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        bool_check=true;
+        
+        let height = prompt("높이가 몇인 삼각형을 만들건아요? (그만하고 싶다면 숫자 외의 값을 입력");
+        height = Number(height);
+        console.log(typeof(height));
+        bool_check = Number.isInteger(height);
+
+        for(let x=1; x<=height; x++){
+            for(let y=1; y<=x; y++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+
+        document.write("<br>");
+
+        for(let i=1; i<=height; i++){
+            for(let j=i; j<=height; j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+
+        document.write("<br>");
+
+        for(let k=1; k<=height; k++){
+            for(let l=k; l<=height-1; l++){
+                document.write("&nbsp;");
+            }
+            for(let u=1; u<=2*k-1; u++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        
+
+        document.write("<br>");
+
+        for(let k=1; k<=height; k++){
+            for(let l=k; l<=height-1; l++){
+                document.write("&nbsp;");
+            }
+            for(let u=1; u<=2*k-1; u++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    let sum = 0;
+
+    for(let i=1; i<=10; i++){
+        sum = sum + i;
+    }
+    document.write(sum + "<br>");
+    /* for(초기값; 조건문; 증감값){
+         반복할 문장;
+    }*/
+
+
+    let sum2 =0;
+    for(let j=10; j<=25; j++){
+        sum2 = sum2 + j;
+    }
+    document.write(sum2+ "<br>");
+
+    let sum3 = 0;
+    for(let k=10; k<=100; k=k+3){
+        sum3 = sum3 + k;
+    }
+    document.write(sum3);
+    document.write("<br>");    
+
+    let gugu_sum;
+    for(let i=1; i<10; i++){
+        for(let j=2; j<10; j++){
+            gugu_sum = i*j;
+            document.write(j + " X " + i + " = " + gugu_sum +"<span style='white-space:pre'>&#9;</span>");
+        }
+        document.write("<br>");
+    }
+
+    document.write("<br>");
+
+    let gugu_sum2;
+    for(let i=9; i>=1; i--){
+        for(let j=2; j<10; j++){
+            gugu_sum2 = i*j;
+            document.write(j + " X " + i + " = " + gugu_sum2 +"<span style='white-space:pre'>&#9;</span>");
+        }
+        document.write("<br>");
+    }
+
+    
+    </script>
+</body>
+</html>

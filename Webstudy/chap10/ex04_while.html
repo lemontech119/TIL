@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .sq {
+            border: 1px solid black;
+            width: 400px;
+        }
+    </style>
+    <script>
+        var rand = Math.random() * 99 + 1;
+        var guess = 0;
+    </script>
+</head>
+<body>
+    <div class="sq">
+        <h1>숫자 맞추기 게임</h1>
+        <br>
+        <p>숫자는 1부터 100까지 있습니다.</p>
+        <input type="number" id="num" min="1" max="100">
+        <button onclick="check()">확인</button><br>
+        추측횟수: <input type="text" id="GuessNum"><br>
+        힌트: <input type="text" id="hint">
+    </div>
+
+    <script>
+        function check(){
+            let check_num = document.getElementById("num").value;
+            console.log(check_num);
+            rand = parseInt(rand);
+            console.log(rand);
+            let guessNum, hint;
+            check_num = Number(check_num);
+            if(check_num == rand){
+                hint="정답 잘 찍는군요";
+            }else if(check_num < rand){
+                hint="크다아아~";
+            }else if(check_num > rand){
+                hint="작드아아아~~";
+            }else{
+                hint="오류났어요"
+            }
+            guess++;
+
+            console.log(guess);
+            console.log(hint);
+            document.getElementById("GuessNum").value = guess;
+            document.getElementById("hint").value = hint;
+        }
+    
+    </script>
+</body>
+</html>
