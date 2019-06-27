@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Array 테스트</h1>
+
+    <script>
+        let score = [10,20,30];
+        let data = new Array(10, 20, 30);
+        console.log(score);
+        console.log(data);
+
+        score.push(100);
+        score.push(50);
+        //배열에 데이터 집어넣기
+        console.log(score);
+
+        score.pop();
+        score.pop();
+        console.log(score);
+        //배열에서 데이터 빼는 것
+
+        let data_a = score.pop()
+        let data_b = score[0];
+    </script>
+</body>
+</html>

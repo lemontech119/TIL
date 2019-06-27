@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var d1 = new Date();
+        var d2 = new Date(2019, 01, 01);
+        var d3 = new Date(1231232131);
+
+        document.write(d2, "<br>");
+        document.write(d1, "<br>");
+        document.write(d3, "<br>");
+
+        var diff = d1.getTime() - d2.getTime();
+        document.write(diff, "<br>");
+        var month = d1.getMonth();
+        var today = d1.getDate();
+        document.write(month +" "+ today);
+    </script>
+</body>
+</html>

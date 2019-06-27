@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+    
+    </script>
+</head>
+
+<body>
+    <script>
+        let list = [];
+        for(let k=1; k<=45; k++){
+            list.push(k);
+        }
+        list= shuffle(list);
+        console.log(list);
+        for(let s=1; s<=6; s++){
+            document.write(list.pop() + " ");
+        }
+    </script>
+</body>
+
+</html>
