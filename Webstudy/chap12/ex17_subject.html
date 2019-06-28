@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var telBook = new Array();
+        var tel_object = new Object();
+        
+
+        $(document).ready(function () {
+           $("#btn").click(function () {
+                var name = $('#name').val();
+                tel_object.name = name;
+                $('#name').val("");
+
+                var tel =$('#tel').val();
+                tel_object.tel = tel;
+                $('#tel').val("");
+                
+                var address = $('#address').val();
+                tel_object.address = address;
+                $('#address').val("");
+
+                telBook.push(tel_object);
+
+                $('#append').append('이름 : '+ name);
+                $('#append').append(' 전화번호 : '+ tel);
+                $('#append').append(' 주소 : '+ address + '<br>');
+                console.log(telBook);
+           });
+       });
+
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    이름: <input type="text" id="name"><br>
+    전화번호: <input type="text" id="tel"><br>
+    주소: <input type="text" id="address"><br>
+    <button id="btn">입력</button><br>
+    <p id="append"></p>
+</body>
+</html>

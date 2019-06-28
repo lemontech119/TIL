@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <input id="name" type="text" placeholder="이름을 입력하세요">
+    <input id="number" type="text" placeholder="전화번호">
+    <input id="address" type="text" placeholder="주소">
+    <input id="singup" type="submit" value="등록" onclick="addmem()">
+    <h1>회원 명단</h1>
+    <hr>
+    <ol id="member">
+
+    </ol>
+
+    <script>
+        var memlist = [];
+        var i = 0;
+
+        function addmem() {
+            let memobj = {};
+            memobj.name = document.getElementById('name').value;
+            memobj.number = document.getElementById('number').value;
+            memobj.address = document.getElementById('address').value;
+            memlist[i] = memobj;
+            console.log(typeof (memlist[i]));
+            console.log(memlist[i])
+            console.log(typeof (memlist[i]["name"]));
+
+
+            $('#member').append('<li>이름 : ' + memlist[i]["name"] + ', 전화번호 : ' + memlist[i]["number"] + ', 주소 : ' + memlist[i]["address"] + '</li>');
+
+            i++;
+
+            console.log(memlist);
+        }
+    </script>
+</body>
+
+</html>

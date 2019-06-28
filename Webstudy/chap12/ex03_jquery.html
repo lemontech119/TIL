@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> jQuery 사용 예 </title>
+    <script src='https://code.jquery.com/jquery-3.3.1.js'></script>
+    <script>
+        function f1() {
+            $("#t1").html("jQuery 라이브러리");
+
+        }
+        function f2() {
+            $("#t1").css("color", "red");
+
+        }
+        $(document).ready(function () {
+            $("#b1").on("click", f1);
+            $("#b2").on("click", f2);
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <h3 id="t1"> 자바스크립트 프로그래밍 </h3>
+    <hr>
+    <button id="b1">내용변경</button>
+    <button id="b2">스타일변경</button>
+</body>
+
+</html>

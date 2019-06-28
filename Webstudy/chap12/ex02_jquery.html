@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // $(document).ready(function () {
+        //     $("button").click(function () {
+        //         $("p").hide();
+        //     });
+        // });
+        $(function () {
+            $("p").on({
+                mouseenter: function () {
+                    $(this).css("background-color", "lightgray");
+                },
+                mouseleave: function () {
+                    $(this).css("background-color", "lightblue");
+                },
+                click: function () {
+                    $(this).css("background-color", "yellow");
+                },
+                
+            });
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <h2>타이틀</h2>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <button>클릭하면 사라짐</button>
+
+</body>
+
+</html>
