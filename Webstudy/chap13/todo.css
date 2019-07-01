@@ -1,0 +1,51 @@
+#table {
+    width: 100%;
+    margin: auto;
+}
+
+td {
+    border-top:1px solid black;
+}
+
+.todo_box {
+    width: 80%;
+    margin: auto;
+    height: 250px;
+}
+#fake_div {
+    height: 70px;
+}
+input {
+    margin: 0;
+}
+
+input[type="text"] {
+    width: 70%;
+    height: 40px;
+    border: none;
+    font-size: 1em;
+    padding-left: 5px;
+    font-style: oblique;
+    display: inline;
+    outline: none;
+    box-sizing: border-box;
+    color: black;
+
+}
+
+input[type=button] {
+    background-color: lightgray;
+    height: 40px;
+    border: none;
+    font-size: 1.05em;
+    color: #042AaC;
+    outline: none;
+    display: inline;
+    margin-left: -4px;
+    margin-bottom: 3px;
+    box-sizing: border-box;
+}
+
+input[type=button]:hover {
+    background-color: black;
+}

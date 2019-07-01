@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script>
+       $(function() {
+           //$('.level-1').find('ul').css({'color':'red'});
+            //$('li').css({'color':'yellow'});
+            //$('.item-b').parent().before('<li class="item-c">test</li>');
+            $('.level-1').children().before('<li class="item-c">test</li>');
+            
+       });
+   </script>
+</head>
+<body>
+   <ul class="level-1">
+       <li class="item-i">I</li>
+       <li class="item-ii">II
+           <ul class="level-2">
+               <li class="item-a">A</li>
+               <li class="item-b">B
+                   <ul class="level-3">
+                       <li class="item-1">1</li>
+                       <li class="item-2">2</li>
+                       <li class="item-3">3</li>
+                   </ul>
+               </li>
+               <li class="item-c">C</li>
+           </ul>
+       </li>
+       <li class="item-iii">III</li>
+   </ul>
+</body>
+</html>

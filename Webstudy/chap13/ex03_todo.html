@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="todo.css">
+    <title>Document</title>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").click(function () {
+                var name = $('#todo_title').val();
+                var row = "<tr>";
+                row += "<td class='1' name='1'>" + name + "</td>";
+                row += "<td style='text-align:right;'><span>X</span></td>"
+                row += "</tr>";
+                $("#table").append(row).trigger("pagecreate");
+                $('#todo_title').val("");
+                $('#todo_title').focus();
+            });
+            $('#todo_title').keydown(function (key) {
+                if (key.keyCode == 13) {
+                    var name = $('#todo_title').val();
+                    var row = "<tr>";
+                    row += "<td class='slash'>" + name + "</td>";
+                    row += "<td style='text-align:right;'><span>X</span></td>"
+                    row += "</tr>";
+                    $("#table").append(row).trigger("pagecreate");
+                    $('#todo_title').val("");
+                    $('#todo_title').focus();
+                }
+            });
+
+
+            $("#table").on("click", ".1", function () {
+                var date = new Date();
+                $(this).append(date);
+                $(this).css("text-decoration", "line-through");
+                $(this).css("color", "lightgray");
+                $(this).attr("name", "2");
+
+
+            });
+
+            $("#table").on("click", "span", function () {
+                $(this).closest("tr").remove();
+            });
+
+
+        });
+    </script>
+    <style>
+        td {
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6" style="background-color: gray">
+                <div class="todo_box">
+                    <div id="fake_div"></div>
+                    <h1>Todo List</h1>
+                    <input type="text" id="todo_title" placeholder="Title...">
+                    <input type="button" id="btn" value="추가">
+                </div>
+
+
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="todo_list_box">
+                    <table id="table" class="table"></table>
+                </div>
+
+            </div>
+            <div class="col-sm-3"></div>
+
+        </div>
+</body>
+
+</html>
