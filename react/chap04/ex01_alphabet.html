@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        
+    </style>
+
+</head>
+
+<body>
+    <h1>알파벳 테스트</h1>
+
+    <script type="text/babel">
+
+        class Letter extends React.Component {
+            render() {
+                let letterStyle = {
+                    backgroundColor: this.props.bgcolor,
+                    margin : "10px",
+                    padding: "20px",
+                    color : "#333",
+                    fontFamily: "monospace",
+                    fontSize: "32px",
+                    textAlign: "center"
+                }
+
+                return(
+                    <h1 style={letterStyle}>{this.props.children}</h1>
+                )
+            }
+        }
+    
+        ReactDOM.render(
+            <div>
+                <Letter bgcolor="#58B3FF">A</Letter>
+                <Letter bgcolor="#FF60FF">E</Letter>
+                <Letter bgcolor="#FFD5D2">I</Letter>
+                <Letter bgcolor="#15D538">O</Letter>
+                <Letter bgcolor="#777778">U</Letter>
+            </div>
+            , document.body
+        )
+        
+    </script>
+
+</body>
+
+</html>

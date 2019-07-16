@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+ 
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    
+    <style>
+        div h1{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>리액트 테스트</h1>
+    <div id="target"></div>
+
+    <script type="text/babel">
+        let target = document.querySelector("#target");
+
+        class FirstComponent extends React.Component {
+            render() {
+                return <h2>{this.props.hero}</h2>
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <h1>Spiderman</h1>
+                <h1>Ironman</h1>
+                <h1>Captain America</h1>
+                <FirstComponent hero="black panther" />
+            </div>,
+            target
+        )
+    
+    </script>    
+</body>
+</html>
