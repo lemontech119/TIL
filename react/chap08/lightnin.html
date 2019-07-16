@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    
+
+    <script type="text/babel">
+
+        class LightningCounter extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    strikes: 100
+                }
+            }
+
+            componentDidMount() {
+                setInterval(() => {
+                   this.setState({
+                       strikes: this.state.strikes + 100
+                   });
+                }, 1000);
+            }
+            
+            render() {
+                return (
+                    <div>
+                        <h1>{this.state.strikes}</h1>
+                    </div>
+                )
+            }
+        }
+
+        class LightningCounterDisplay extends React.Component {
+            render() {
+                let divStyle = {
+                    width: "250px",
+                    textAlign: "center",
+                    backgroundColor: "blue",
+                    padding: "40px",
+                    fontFamily: "sans-serif",
+                    color: "#999",
+                    borderRadius: 10
+                }
+
+                return(
+                    <div style={divStyle}>
+                        <LightningCounter />
+                    </div>
+                )
+            }
+        }
+
+
+        ReactDOM.render(
+            <div>
+                <LightningCounterDisplay />
+            </div>
+            , document.body
+        )
+    </script>
+</body>
+</html>
