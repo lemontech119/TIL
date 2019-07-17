@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <h1 id="colorHeading">Colorizer</h1>
+    <div id="container"></div>
+
+    <script type="text/babel">
+        let heading = document.querySelector('#colorHeading');
+        
+        class ColorLable extends React.Component {
+
+            render() {
+                
+                return ReactDOM.createPortal(
+                    <span> : {this.props.bgColor}</span>,
+                    heading
+
+                )
+            }
+        }
+
+        class Colorizer extends React.Component {
+            
+            
+
+            constructor(props){
+                super(props);
+
+                this.state = {
+                    color: "",
+                    bgColor: "blue"
+                }
+            }
+
+            setNewColor = (evt) => {
+                this.setState({
+                    bgColor: this._input.value
+                })
+                this._input.value ="";
+                this._input.focus();
+                evt.preventDefault();
+            }
+
+            
+
+            render() {
+                let squareStyle = {
+                    width: "100px",
+                    height: "100px",
+                    backgroundColor: this.state.bgColor
+
+                }
+
+                return(
+                    <div>
+                        <div style={squareStyle} className="colorSquare"></div>
+                        <form onSubmit={this.setNewColor} >
+                            <input type="text" placeholder="Enter color code" ref={(el) => this._input = el} />
+                            <button type="submit">go</button>
+                        </form>
+                        <ColorLable bgColor={this.state.bgColor} />
+                    </div>
+                    
+                )
+            }
+        }
+        
+        ReactDOM.render(
+            <div>
+                <Colorizer />
+            </div>
+        , document.querySelector("#container")
+        )
+    </script>
+</body>
+</html>
