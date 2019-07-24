@@ -2,7 +2,7 @@
 
 1. 데이터베이스
 
-   ``` sql
+   ```sql
    SHOW databases; #데이터베이스 조회
    CREATE DATABASE test_db default character set UTF8; # 데이터베이스 생성
    use test_db; # 해당 사용자가 test_db를 사용한다는 뜻
@@ -13,7 +13,7 @@
 
 2. CREATE TABLE 
 
-   ``` sql
+   ```sql
    CREATE TABLE test
    (
    	idx INT PRIMARY KEY auto_increment,
@@ -36,7 +36,7 @@
 
 3. INSERT TABLE
 
-   ``` sql
+   ```sql
    INSERT INTO test (idx, name, level, noshow) VALUES('1', 'test', 1, 0);
    ```
 
@@ -49,3 +49,41 @@
    ```
 
    > *는 테이블이 가지는 모든 필드를 뜻합니다. 
+
+   ```sql
+   select * from employees order by first_name ASC, last_name DESC;
+   -- ASC 오름차순 DESC 내림차순
+   
+   select * from employees limit 10;
+   -- 가져오는 갯수를 제한할 수 있음
+   
+   select * from employees limit 10 OFFSET 10;
+   -- 앞에서 몇개 스킵하고 가져오는것
+   
+   select distinct first_name from employees; 
+   -- 중복된 내용은 빼고 출력 
+   
+   select * from employees where first_name like 'K%';
+   -- like는 패턴 검색임
+   -- 위의 like는 k로 시작하는 것을 찾아줘
+   ```
+
+   
+
+5. DROP TABLE
+
+   ```sql
+   DROP * test;
+   ```
+
+   > DROP * 테이블명; 으로 제거 가능
+   >
+   > 제거시 복구가 불가능 하므로 신중히 제거 해야됨.
+
+6. DELETE TABLE
+
+   ```sql
+   delete from employees where emp_no= 10001;
+   ```
+
+   
