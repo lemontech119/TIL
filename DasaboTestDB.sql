@@ -8,6 +8,7 @@ CREATE TABLE User_TB
     Name_User varchar(40) NOT NULL,
     Email varchar(200) unique,
     Pw_User varchar(400) NOT NULL,
+    salt varchar(400) NOT NULL,
 	Phone_User Varchar(20) NOT NULL,
     Address_User Varchar(300),
     Create_at datetime default now(),
@@ -37,7 +38,7 @@ Create TABLE Store_TB
     Sales varchar(20) default 'not',
     Minimum_Order INT,
     Address_Store  varchar(300),
-    No_Image varchar(20) default 'not',
+    ImageYn varchar(20) default 'N',
     foreign key(Idx_User) references User_TB (Idx_User),
     foreign key(Idx_Food) references Type_Food_TB (Idx_Food)
 );
@@ -98,8 +99,17 @@ Create TABLE Basket_TB
     foreign key(Idx_Menu) references Menu_TB (Idx_Menu)
 );
 
--- Create TABLE Order_TB
--- (
--- 	Idx_Order INT primary key auto_increment,
---     
--- )
+Create TABLE Order_TB
+(
+	Idx_Order Varchar(100),
+	Idx_User INT,
+    Idx_Store INT,
+    Idx_Menu INT,
+    Price_Order Int,
+    Approval varchar(30),
+    Address_User varchar(300),
+    Create_at datetime default now(),
+    foreign key(Idx_User) references User_TB (Idx_User),
+    foreign key(Idx_Store) references Store_TB (Idx_Store),
+    foreign key(Idx_Menu) references Menu_TB (Idx_Menu)
+);
