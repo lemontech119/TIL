@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Hello World</h1>
+        </div>
+        <!-- 인삿말을 설정 -->
+        <div class="row">
+            <div class="input-group">
+                <label class="input-group-text" for="greeting">메시지</label>
+                <input class="form-control" type="text" id="greeting" />
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" id="btnSetGreeting">인삿말 설정</button>
+                </div>
+            </div>
+        </div>
+        <!-- 인삿말을 확인 -->
+        <div class="row">
+            <button type="button" class="btn btn-secondary" id="btnGetGreeting">인삿말 확인</button>
+        </div>
+
+        <div class="row">
+            <div id="divMsg" class="alert alert-dark"></div>
+        </div>
+    </div>
+
+    <script>
+        var Web3 = require('web3');
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        //var _greeting = "Hello World~~";
+        // ABI_ARRAY_STRING
+        
+        var helloworldContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"say","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_greeting","type":"string"}],"name":"setGreeting","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"greeting","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_greeting","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"greeting","type":"string"}],"name":"EventSetGreeting","type":"event"}]);
+ 
+        // CA
+        const ca = "0x3586Ed7bCDd63C20928B4d55477F63AD79cB1D55";
+        let hc = helloworldContract.at(ca);
+
+
+        $(function () {
+            // 인사말 설정 버튼을 클릭한 경우
+            $('#btnSetGreeting').click(function () {
+                let greeting = $('#greeting').val();
+                hc.setGreeting.sendTransaction(
+                    greeting,
+                    {
+                        from: web3.eth.accounts[0],
+                        gas:1000000
+                    },
+                    function(err, res){
+                        if(!err){
+                            $('#divMsg').attr('class', 'alert alert-success');
+                            $('#divMsg').text(`${res} 트랜잭션이 등록되었습니다.`);
+                        }else{
+                            $('#divMsg').attr('class', 'alert alert-danger');
+                            $('#divMsg').text(`${err} `);
+                        }
+                    }
+                )
+            });
+
+            // 
+            $('#btnGetGreeting').click(function () {
+                let msg = hc.say();
+                $('#divMsg').text(msg);
+            });
+
+            // 계약에서 생성한 이벤트를 감지(감시)
+            hc.EventSetGreeting().watch(function(err, res){
+                if(!err){
+                    $('#divMsg').attr('class', 'alert alert-success');
+                    $('#divMsg').text(res.args.greeting);
+                    console.log(res);
+                }else{
+                    $('#divMsg').attr('class', 'alert alert-danger');
+                    $('#divMsg').text(`${err} `);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

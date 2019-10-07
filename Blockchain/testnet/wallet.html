@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        label {
+            min-width: 200px !important;
+            display: inline-block !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 제목 -->
+        <div class="row">
+            <h1>Ether wallet</h1>
+        </div>
+        <!-- 계좌 잔고 출력 -->
+        <div class="row">
+            <div id="divStatus">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">계정</th>
+                            <th scope="col">잔액</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 송금 입력 창 -->
+        <div class="row">
+            <div class="input-group">
+                <label class="input-group-text" for="fromAccounts">보내는 사람</label>
+                <select class="form-control accountsList" id="fromAccounts">
+                    <option selected>선택하세요.</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label class="input-group-text" for="fromPassword">패스워드</label>
+                <input class="form-control" id="fromPassword" type="password" />
+            </div>
+            <div class="input-group">
+                <label class="input-group-text" for="toAccounts">받는 사람</label>
+                <select class="form-control accountsList" id="toAccounts">
+                    <option selected>선택하세요.</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label class="input-group-text" for="amount">송금액</label>
+                <input class="form-control" id="amount" type="number" />
+                <div class="input-group-append">
+                    <span class="input-group-text">ETHER</span>
+                    <button type="button" class="btn btn-primary" id="btnSend" onclick="sendEther()">송금</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var Web3 = require('web3');
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        console.log(web3.isConnected());
+
+        // 계정 정보를 조회해서 보내는 사람과 받는 사람 선택창에 설정
+        function setAccountsList() {
+            let accounts = web3.eth.accounts;
+            // console.log(accounts);
+            //$('#fromAccounts').empty();
+
+            for (let cnt = 0; cnt < accounts.length; cnt++) {
+                let option = $("<option>" + accounts[cnt] + "</option>");
+                $("#fromAccounts").append(option);
+            }
+            for (let cnt = 0; cnt < accounts.length; cnt++) {
+                let option = $("<option>" + accounts[cnt] + "</option>");
+                $("#toAccounts").append(option);
+            }
+        }
+
+        // 계정 별 잔액을 divStatus 영역에 출력
+        function showStatus() {
+            $("#tbody").empty();
+            let accounts = web3.eth.accounts;
+            accounts.forEach(account => {
+                let balance = web3.fromWei(web3.eth.getBalance(account), "ether");
+                // console.log(`${account} => ${balance} ETH`);
+                let content = "";
+                content += '<tr>';
+                content += `<td>${account}</td>`;
+                content += `<td>${balance} ETH</td>`;
+                content += '<tr>';
+                $("#tbody").append(content);
+            });
+        }
+
+        $(function () {
+            setAccountsList();
+            showStatus();
+
+            // 블록에 변화가 생기면 계정별 잔액 정보를 갱신
+            web3.eth.filter('latest').watch(function () {
+                console.log("변화가 생겼습니다~~~~~~~~~~~~~~~~~~~~~~~");
+                showStatus();
+            })
+
+        })
+        // 송금 버튼을 클릭하면 송금을 요청
+        function sendEther() {
+            let fromAccounts = $("#fromAccounts").val();
+            let toAccounts = $("#toAccounts").val();
+            let fromPassword = $("#fromPassword").val();
+            let amount = $("#amount").val();
+
+            if(web3.personal.unlockAccount(fromAccounts, fromPassword)){
+                web3.eth.sendTransaction({
+                    from: fromAccounts,
+                    to: toAccounts,
+                    value: web3.toWei(amount, "ether")
+                }, function(err, res){
+                    if(!err){
+                        console.log("성공!!! ", res);
+                        $("#fromPassword").empty();
+                        $("#amount").empty();
+                    } else console.error(err);
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>
