@@ -15,6 +15,7 @@ for menu in menu_list:
     url = base_url + menu
     response = requests.get(url).text
     soup = BeautifulSoup(response, 'html.parser')
+    ## 피자 스쿨 3개 피자만 번호로 되어 있어요...
     if menu == '446' :
         menu = '스테이크피자'
     elif menu == '465' :
