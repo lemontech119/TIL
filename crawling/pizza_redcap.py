@@ -25,5 +25,18 @@ for menu in menuList:
 menuView = 'http://www.redcappizza.com/menu/menu_view.jsp?pdid='
 
 print(menuArray)
+for url in menuArray:
+    menuUrl = ''
+    menuUrl = menuView + url
+    
+    driver.get(menuUrl)
+    time.sleep(2)
+    
+    title = driver.find_element_by_class_name('pdname').text
+    topping = driver.find_element_by_class_name('poscode4').text
+    print("-------------------------------")
+    print(title)
+    print(topping)
+
 
 driver.quit()
