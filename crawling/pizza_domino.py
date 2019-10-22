@@ -39,7 +39,9 @@ for menu in href_list:
     ## 가격 가져오기는 실패...
     tab_content = menu_soup.select(".tab_content")
     main_topping = tab_content[1].select_one(".tbl_type").select_one("tbody").select_one("tr").select_one("td").text
+    short_info = tab_content[0].select_one(".detail_view_info").text
     print(title)
+    print(short_info.strip())
     ##print('라지 가격은: ', price_large)
     ##print('미들 가격은: ', price_medium)
     print('토핑: ', main_topping)
