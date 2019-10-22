@@ -24,9 +24,11 @@ for menu in menu_list:
         menu = '깐쇼새우피자'
     
     li_list = soup.select(".article-icon-entry")
-    
+    short_info = li_list[0].select_one(".iconlist_content ").select_one("p").text
     topping = li_list[1].select_one(".iconlist_content ").select_one("p").text
+    
     print(menu)
+    print(short_info)
     print(topping)
     print('------------------------')
     

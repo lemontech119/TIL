@@ -38,8 +38,10 @@ for i in menuArray:
     driver.get(lastUrl)
     time.sleep(2)
     title = driver.find_element_by_class_name('product_title').find_element_by_tag_name('h4').text
+    short_info = driver.find_element_by_class_name('menu_txt').text
     topping = driver.find_element_by_class_name('basic_topping_desc').text
     print(title)
+    print(short_info)
     print(topping)
     print("--------------------------------")
 
