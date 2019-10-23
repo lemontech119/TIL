@@ -1,5 +1,9 @@
 import requests
+import json
 from bs4 import BeautifulSoup
+from collections import OrderedDict
+
+file_data = OrderedDict()
 
 ## 피자스쿨 menu 리스트 url
 base_url = 'http://pizzaschool.net/menu/'
@@ -27,8 +31,14 @@ for menu in menu_list:
     short_info = li_list[0].select_one(".iconlist_content ").select_one("p").text
     topping = li_list[1].select_one(".iconlist_content ").select_one("p").text
     
-    print(menu)
-    print(short_info)
-    print(topping)
+    file_data["brand"] = "피자스쿨"
+    file_data["pizza_name"] = menu
+    file_data["short_info"] = short_info
+    file_data["topping"] = topping
+
+    with open('school.json', 'a', encoding="utf-8") as make_file:
+        json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
+
+
     print('------------------------')
     

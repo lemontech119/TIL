@@ -1,7 +1,10 @@
 import requests
 import time
+import json
 from bs4 import BeautifulSoup
+from collections import OrderedDict
 
+file_data = OrderedDict()
 
 # chromedriver = 'C:\coding\chromedriver.exe'
 
@@ -26,14 +29,22 @@ for menu in menu_list:
     # product = driver.find_elements_by_class_name('product_cont').text
     title = soup.select_one('.product_top').select_one('h1').text
     short_info = soup.select_one('.product_top').select_one('div').text
+    short_info = short_info.replace("\n", "")
+    short_info = short_info.replace("\t", "")
+    short_info = short_info.replace("\r", "")    
     product = soup.select_one('.product_summary').text
     product = product.replace("\n", "")
     product = product.replace("\t", "")
     product = product.replace("\r", "")
     
-    print(title)
-    print(short_info.strip())
-    print(product)
+    file_data["brand"] = "미스터피자"
+    file_data["pizza_name"] = title
+    file_data["short_info"] = short_info
+    file_data["topping"] = product
+    with open('mr.json', 'a', encoding="utf-8") as make_file:
+        json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
+    
+
     
     print('------------------------')
     

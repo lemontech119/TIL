@@ -1,5 +1,9 @@
 import requests
+import json
 from bs4 import BeautifulSoup
+from collections import OrderedDict
+
+file_data = OrderedDict()
 
 ## 도미노피자 크롤링
 
@@ -40,9 +44,13 @@ for menu in href_list:
     tab_content = menu_soup.select(".tab_content")
     main_topping = tab_content[1].select_one(".tbl_type").select_one("tbody").select_one("tr").select_one("td").text
     short_info = tab_content[0].select_one(".detail_view_info").text
-    print(title)
-    print(short_info.strip())
-    ##print('라지 가격은: ', price_large)
-    ##print('미들 가격은: ', price_medium)
-    print('토핑: ', main_topping)
-    ## 체크를 위한 print
+    
+    
+    file_data["brand"] = "도미노피자"
+    file_data["pizza_name"] = title
+    file_data["short_info"] = short_info
+    file_data["topping"] = main_topping
+    with open('domino.json', 'a', encoding="utf-8") as make_file:
+        json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
+    
+
