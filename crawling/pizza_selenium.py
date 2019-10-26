@@ -4,6 +4,11 @@ from collections import OrderedDict
 import time
 import json
 
+with open('allTopping.json', encoding="utf-8") as json_file:
+    allTopping = json.load(json_file)
+
+print(allTopping)
+
 file_data = OrderedDict()
 ## 파파존스 크롤링은 request와 BeautifulSoup으로 데이터를 가져오는 데 무리가 있을 것이라고 판단되어 selenium활용
 
@@ -34,6 +39,7 @@ for menu in menuList:
     menuArray.append(onclick)
     
 jsonArray = []
+##allTopping = []
 
 for i in menuArray:
     menuUrl = 'https://www.pji.co.kr/menu/menuView.jsp?pd_id='
@@ -44,16 +50,32 @@ for i in menuArray:
     title = driver.find_element_by_class_name('product_title').find_element_by_tag_name('h4').text
     short_info = driver.find_element_by_class_name('menu_txt').text
     topping = driver.find_element_by_class_name('basic_topping_desc').text
-    
+    print(type(topping))
+    topping = str(topping)
+    topping = topping.split(',')
+    toppingArray = []
+    for i in topping:
+        lastTopping = i.strip()
+        toppingArray.append(lastTopping)
+        if lastTopping in allTopping:
+            print("이게 포함되네 1")
+        else: 
+            allTopping.append(lastTopping)
+
+
     file_data["brand"] = "파파존스"
     file_data["pizza_name"] = title
     file_data["short_info"] = short_info
-    file_data["topping"] = topping
+    file_data["topping"] = toppingArray
+
 
     with open('papa.json', 'a', encoding="utf-8") as make_file:
         json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
-    
 
+print(allTopping)
+
+with open('papaTopping.json', 'w', encoding="utf-8") as make_files:
+    json.dump(allTopping, make_files, ensure_ascii=False, indent="\t")
 
 
 time.sleep(3)

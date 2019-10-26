@@ -15,6 +15,8 @@ menu_list = ['허니비프피자', '더블갈릭바베큐피자', '고르곤졸�
 '아이리쉬포테이토피자', '461', '도이치바이트피자', '멕시칸바이트피자', '직화홀릭바이트피자',
 '야채퀘사디아피자', '치킨퀘사디아피자', '비프퀘사디아피자', '465', '닭안심살피자']
 
+allTopping = []
+
 for menu in menu_list:
     url = base_url + menu
     response = requests.get(url).text
@@ -30,15 +32,29 @@ for menu in menu_list:
     li_list = soup.select(".article-icon-entry")
     short_info = li_list[0].select_one(".iconlist_content ").select_one("p").text
     topping = li_list[1].select_one(".iconlist_content ").select_one("p").text
-    
+    topping = str(topping)
+    topping =topping.split(',')
+    toppingArray = []
+    for i in topping:
+        lastTopping = i.strip()
+        toppingArray.append(lastTopping)
+        if lastTopping in allTopping:
+            print("포함된 거임")
+        else: 
+            allTopping.append(lastTopping)
+
     file_data["brand"] = "피자스쿨"
     file_data["pizza_name"] = menu
     file_data["short_info"] = short_info
-    file_data["topping"] = topping
+    file_data["topping"] = toppingArray
 
+    
     with open('school.json', 'a', encoding="utf-8") as make_file:
         json.dump(file_data, make_file, ensure_ascii=False, indent="\t")
-
-
     print('------------------------')
+
+with open('allTopping.json', 'a', encoding="utf-8") as make_files:
+    json.dump(allTopping, make_files, ensure_ascii=False, indent="\t")
+
+
     

@@ -1,5 +1,6 @@
 import requests
 import json
+import re
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 
@@ -44,7 +45,7 @@ for menu in href_list:
     tab_content = menu_soup.select(".tab_content")
     main_topping = tab_content[1].select_one(".tbl_type").select_one("tbody").select_one("tr").select_one("td").text
     short_info = tab_content[0].select_one(".detail_view_info").text
-    
+    ##main_topping = re.sub("\(*\)", "", main_topping)
     
     file_data["brand"] = "도미노피자"
     file_data["pizza_name"] = title
