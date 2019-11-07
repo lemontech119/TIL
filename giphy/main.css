@@ -1,0 +1,26 @@
+body {
+    width: 80%;
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.container-padding50 {
+    padding-top: 50px;
+}
+
+.container-textinput{
+    width: 80%;
+    display: inline-block;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.container-button{
+    width: 10%;
+    display: inline-block;
+    padding: 20px;
+    background-color: green;
+    color: red;
+    
+}
