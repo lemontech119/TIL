@@ -18,6 +18,18 @@ $ apt-get install -y nginx
 ## 추가적으로 테스트를 위해 포트 3000, 3001, 3002로 테스트 서버 오픈
 ```
 
+- git 설치(안해도 됨)
+
+``` bash
+$ sudo add-apt-repository ppa:git-core/ppa
+$ sudo apt-get update && sudo apt-get dist-upgrade
+$ sudo apt-get install git-core
+ 
+$ git version
+```
+
+
+
 - 테스트 서버 코드
 
 ``` javascript
