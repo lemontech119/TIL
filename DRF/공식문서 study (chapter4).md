@@ -100,3 +100,145 @@ class UserDetail(generics.RetrieveAPIView):
 ```
 
 마지막으로 이러한 view들을 URL conf에서 참조해 API에 추가해야 한다. 
+
+``` python
+path('users/', views.UserList.as_view()),
+path('users/<int:pk>/', views.UserDetail.as_view()),
+```
+
+
+
+#### Associating Snippets with Users
+
+데이터를 생성했지만, 데이터를 생성한 생성자와 연결할 방법이 없었고, 이를 해결하기 위해 perform_create 메서드를 오버라이딩합니다. 
+
+이 메서드는 인스턴스 저장 방법을 관리하고, 들어오는 요청이나 요청된 url에서 들어온 정보를 처리합니다. 
+
+views.py의 SnippetList 클래스에 다음 내용을 추가합니다.
+
+``` python
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+```
+
+- serializer의 create 메서드는 데이터와 함께 owner 필드가 함께 전달된다. 
+
+
+
+#### Updating our serializer
+
+이제 데이터와 이를 만든 사용자가 연결되어 있으므로 SnippetSerializer응 업데이트를 해줍니다.
+
+아래의 내용을 serializers.py의 class SnippetSerializer에 추가해줍니다. 
+
+``` python
+class SnippetSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Snippet
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style', 'owner']
+```
+
+- ReadOnlyField는 source인자를 이용해 특정 필드를 지정할 수 있습니다. 
+- 이 필드는 타입이 CharField, BooleanField와 달리 타입이 없으며, 항상 읽기 전용이므로 모델의 인스턴스를 업데이트할 때는 사용할 수 없습니다.
+- CharField(read_only=True)도 동일한 기능을 수행합니다.
+
+
+
+#### Adding required permissions to views
+
+이제 사용자와 데이터가 연결 되었으므로, 인증받은 사용자만이 데이터를 생성/ 업데이트/ 삭제할 수 있습니다. 
+
+REST framework에는 주어진 view에 접근할 수 있는 사용자를 제한하는 데 사용할 수 있는 많은 클래스를 제공합니다. 
+
+여기서 사용되는 IsAuthenticatedOrReadOnly는 인증된 요청에 읽기, 쓰기 권한이 부여되고 인증되지 않은 요청에는 읽기 전용 권한이 부여됩니다. 
+
+우선 views.py에 다음 내용을 추가합니다.
+
+``` python
+from rest_framework import permissions
+```
+
+그리고 SnippetList class와 SnippetDetail class에 다음 속성을 추가합니다. 
+
+``` python
+permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+```
+
+- 여기서 IsAuthenticatedOrReadOnly는 아래와 같이 구성되어 있습니다. 
+
+``` python
+class IsAuthenticatedOrReadOnly(BasePermission):
+    """
+    The request is authenticated as a user, or is a read-only request.
+    """
+
+    def has_permission(self, request, view):
+        return bool(
+            request.method in SAFE_METHODS or
+            request.user and
+            request.user.is_authenticated
+        )
+
+```
+
+
+
+#### Adding login to the Browsable API
+
+- 이 시점에 브라우저에서 API에 접속한다면 데이터가 생성되지 않는 것을 알 수 있습니다.
+- 이 문제를 해결하기 위해 사용자 로그인 기능이 필요합니다.
+- urls.py를 수정해 API에 로그인 view를 추가해줘야 합니다. 
+
+``` python
+from django.conf.urls import include
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
+]
+```
+
+이제 <http://localhost:8000/snippets/> 에 재 접속을 하게 되면 우측 상단에 Log in 버튼이 보일 겁니다. 
+
+앞서 createsuperuser로 만들어준 아이디, 패스워드를 입력하여 들어갑니다. 
+
+그럼 이제 데이터를 생성할 수 있으니, 몇 개의 테스트 데이터를 생성합니다. 
+
+그리고 <http://localhost:8000/users/> 에 접속을 하게 되면 추가 된 것을 확인할 수 있습니다. 
+
+
+
+#### Object level permissions
+
+- 생성된 데이터들은 누구나 볼 수 있어야 하지만, 만든 사용자만이 업데이트와 삭제를 할 수 있어야 합니다.
+  - 현재는 만든 사용자가 아니더라도 로그인을 했을 경우 업데이트와 삭제가 가능합니다.
+- 이를 위해 permissions.py 파일을 만들어 사용자 지정 권한을 작성합니다. 
+
+``` python
+from rest_framework import permissions
+
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        return obj.owner == request.user
+```
+
+그리고 views.py에 추가해주고,
+
+``` python
+from snippets.permissions import IsOwnerOrReadOnly
+```
+
+SnippetDetail의 permission_classes에 해당 사용자 지정 권한을 추가해줍니다. 
+
+``` Python
+permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                      IsOwnerOrReadOnly]
+```
+
+이제 브라우저를 열면, 데이터를 만든 사용자에게만 삭제 수정이 보이는 것을 알 수 있습니다. 
