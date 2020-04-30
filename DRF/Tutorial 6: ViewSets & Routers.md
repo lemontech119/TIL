@@ -61,6 +61,27 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 여기에서는 ReadOnlyModelViewSet 클래스를 사용하여 자동으로 기본 읽기 전용 작업을 제공합니다. 우리는 여전히 일반 view를 사용할 때와 마찬가지로 queryset 및 serializer_class 특성을 설정하지만 더 이상 2개의 별도 클래스에 동일한 정보를 제공할 필요가 없습니다. 
 
+--------
+
+``` python
+class ListAPIView(mixins.ListModelMixin,
+                  GenericAPIView):
+    """
+    Concrete view for listing a queryset.
+    """
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+     
+    
+class RetrieveAPIView(mixins.RetrieveModelMixin,
+                      GenericAPIView):
+    """
+    Concrete view for retrieving a model instance.
+    """
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+```
+
 ``` python
 class ReadOnlyModelViewSet(mixins.RetrieveModelMixin,
                            mixins.ListModelMixin,
