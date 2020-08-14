@@ -11,15 +11,19 @@ greedy = 0
 
 for i in range(length):
     coin = int(sys.stdin.readline())
-    coin_pocket.append(coin)
+    coin_pocket.insert(0, coin)
 
-while money != 0:
-    for coin in coin_pocket:
-        if greedy < coin <= money:
-            greedy = coin
-    coin_number += int(money/greedy)
-    money = money % greedy
-    greedy = 0
+# while money != 0:
+#     for coin in coin_pocket:
+#         if greedy < coin <= money:
+#             greedy = coin
+#     coin_number += int(money/greedy)
+#     money = money % greedy
+#     greedy = 0
+
+for coin in coin_pocket:
+    coin_number += money // coin
+    money %= coin
 
 print(coin_number)
 
