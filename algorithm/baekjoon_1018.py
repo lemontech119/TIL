@@ -7,11 +7,11 @@ min_answer = 64
 
 for made in range(8):
     if made % 2 == 0:
-        white_board.append(["W", "B"] * int(m / 2))
-        black_board.append(["B", "W"] * int(m / 2))
+        white_board.append(["W", "B"] * 4)
+        black_board.append(["B", "W"] * 4)
     elif made % 2 == 1:
-        white_board.append(["B", "W"] * int(m / 2))
-        black_board.append(["W", "B"] * int(m / 2))
+        white_board.append(["B", "W"] * 4)
+        black_board.append(["W", "B"] * 4)
 
 for row in range(n-7):
     for column in range(m-7):
