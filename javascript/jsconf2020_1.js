@@ -1,3 +1,6 @@
+// https://velog.io/@modolee/jsconf2020-karrot-market-quiz
+
+
 const func = function() {
   console.log("당신")
   return new Promise((res) => {
@@ -13,3 +16,5 @@ setTimeout(() => {
 execute.then((msg) => {
   console.log(msg)
 })
+
+
